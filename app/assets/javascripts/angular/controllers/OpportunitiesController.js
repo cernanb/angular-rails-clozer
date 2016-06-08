@@ -1,6 +1,6 @@
 app.controller('OpportunitiesController', OpportunitiesController);
 
-function OpportunitiesController(OpportunitiesService){
+function OpportunitiesController(OpportunitiesService, $http){
   var ctrl = this;
 
   OpportunitiesService.getOpportunities()
@@ -8,25 +8,11 @@ function OpportunitiesController(OpportunitiesService){
     ctrl.opps = response.data.opportunities;
   });
 
-  // ctrl.opps = [
-  //   {
-  //     product: "Life Insurance",
-  //     amount: 1000,
-  //     client_name: "John Smith",
-  //     notes: [
-  //       {
-  //         body: "I sent information to John and will call him in a couple of days",
-  //         opportunity_id: 1,
-  //         created_at: "2016-06-06T07:19:37.687Z",
-  //         updated_at: "2016-06-06T07:19:37.687Z"
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     product: "Annuity",
-  //     amount: 500,
-  //     client_name: "Jack Ramsey",
-  //     notes: [ ]
-  //   }
-  // ]
+  ctrl.deleteOpp = function(opp){
+    console.log(opp.id);
+    $http.delete('http://localhost:3000/api/opportunities/' + opp.id)
+    .then(function(resp){
+      console.log(resp);
+    });
+  }
 }

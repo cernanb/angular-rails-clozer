@@ -7,7 +7,8 @@ class Api::NotesController < ApplicationController
   end
 
   def create
-    @note = Note.new(note_params)
+    @opportunity = Opportunity.find(params[:opportunity_id])
+    @note = @opportunity.notes.build(note_params)
     if @note.save
       respond_to do |f|
         f.json {render json: @note}
@@ -15,7 +16,9 @@ class Api::NotesController < ApplicationController
     end
   end
 
-  def destroy
-    
-  end
+  private
+    def note_params
+      params.require(:note).permit(:body)
+    end
+
 end

@@ -4,13 +4,13 @@
   <h2>{{ctrl.opp.amount | currency:"$":0}}</h2>
 </div>
 
-<div>
+<div ng-controller="NotesController as noteCtrl">
   <h4>Notes</h4>
   <p ng-repeat="note in ctrl.opp.notes">
     {{note.created_at | date}} - {{note.body}}
   </p>
-  <form ng-submit="addNote()">
-    <input type="text">
+  <form ng-submit="noteCtrl.addNote()">
+    <input type="text" ng-model="noteCtrl.body">
     <input type="submit" value="Add Note">
   </form>
 </div>

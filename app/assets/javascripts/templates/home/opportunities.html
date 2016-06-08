@@ -1,6 +1,8 @@
 <h2>Current Opportunities</h2>
 <ul>
   <li ng-repeat="opp in ctrl.opps">
-    <a href="#" ui-sref="home.opportunity({id: opp.id})"><opportunity opp="opp" /></a>
+    <opportunity opp="opp">
+      <a href="#" ng-click="ctrl.deleteOpp(opp)">Delete Opportunity</a>
+    </opportunity>
   </li>
 </ul>

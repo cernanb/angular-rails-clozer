@@ -13,8 +13,11 @@ function OpportunitiesService($http){
   }
 
   this.addOpp = function(newOpp){
-    // console.log(newOpp);
     return $http.post('http://localhost:3000/api/opportunities', newOpp);
+  }
+
+  this.editOpp = function(updatedOpp, id){
+    return $http.put('http://localhost:3000/api/opportunities/' + id, updatedOpp);
   }
 
 }

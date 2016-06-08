@@ -29,7 +29,7 @@ app
       })
       .state('home.edit', {
         url: 'edit/:id',
-        templateUrl: 'home/edit.html'
+        templateUrl: 'home/edit.html',
         controller: "EditOpportunityController as ctrl"
       });
 
