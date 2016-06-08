@@ -2,13 +2,12 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
- * {
-
-   -webkit-box-sizing: border-box !important;
-   -moz-box-sizing: border-box !important;
-   -ms-box-sizing: border-box !important;
-   box-sizing: border-box !important;
- }
+* {
+  -webkit-box-sizing: border-box !important;
+  -moz-box-sizing: border-box !important;
+  -ms-box-sizing: border-box !important;
+  box-sizing: border-box !important;
+}
 
 .opp-card {
   width: 30%;
@@ -18,7 +17,7 @@
   border-radius: 5px;
   margin-right: 1%;
   margin-bottom: 15px;
-  height: 150px;
+  height: 185px;
   background: rgba(153, 194, 255, 0.5);
   box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.75);
   a, a:hover {
@@ -29,4 +28,14 @@
 
 li {
   list-style-type: none;
+}
+
+.opp-search {
+  align: center;
+  width: 75%;
+  margin: auto;
+}
+
+.green {
+  background: rgba(67, 197, 67, 0.5);
 }

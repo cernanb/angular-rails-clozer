@@ -34,6 +34,6 @@ class Api::OpportunitiesController < ApplicationController
 
   private
     def opp_params
-      params.require('opportunity').permit(:product, :amount, :client_name)
+      params.require('opportunity').permit(:product, :amount, :client_name, :won)
     end
 end

@@ -1,8 +1,14 @@
 <h2>Current Opportunities</h2>
+<br>
+<input type="text" class="form-control opp-search text-center" ng-model="ctrl.search" placeholder="Search opportunities...">
+<br><br>
 <ul>
-  <li ng-repeat="opp in ctrl.opps">
+  <li ng-repeat="opp in ctrl.opps | filter: ctrl.search">
     <opportunity opp="opp">
-      <a href="#" ng-click="ctrl.deleteOpp(opp)">Delete Opportunity</a>
+      <a href="#" ng-click="ctrl.deleteOpp(opp)">Delete Opportunity</a> <br>
+      <label>
+        <input type="checkbox" ng-change="ctrl.closeSale(opp)" ng-model="opp.won"> Sale Won
+      </label>
     </opportunity>
   </li>
 </ul>

@@ -4,13 +4,14 @@
     "dependencies": {
       "angular": "v1.5.3",
       "angular-ui-router": "latest",
-      "angular-resource": "v1.5.3"
+      "angular-resource": "v1.5.3",
+      "angular-messages": "latest"
     }
   },
   "vendor": {
     "name": "bower-rails generated vendor assets",
     "dependencies": {
-      
+
     }
   }
 }

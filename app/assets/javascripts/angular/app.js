@@ -1,4 +1,4 @@
-var app = angular.module('closerApp', ['ui.router', 'ngResource', 'templates']);
+var app = angular.module('closerApp', ['ui.router', 'ngResource', 'templates', 'ngMessages']);
 
 app
   .config(function($stateProvider, $urlRouterProvider){

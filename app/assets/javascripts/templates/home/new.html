@@ -1,10 +1,20 @@
 <h1>New Opportunity</h1>
-<form ng-submit="ctrl.addOpp()">
+<form name="form" ng-submit="ctrl.addOpp()">
   <label>Client Name</label>
-  <input type=”text” ng-model="ctrl.opp.client_name">
+  <input type=”text” name="client_name" class="form-control" required="required" ng-model="ctrl.opp.client_name">
+  <div ng-messages="form.client_name.$error" ng-if="form.client_name.$touched">
+    <div ng-message="required">Client name is required!</div>
+  </div>
   <label>Product</label>
-  <input type=”text” ng-model="ctrl.opp.product">
+  <input type=”text” name="product" class="form-control" required="required" ng-model="ctrl.opp.product">
+  <div ng-messages="form.product.$error" ng-if="form.product.$touched">
+    <div ng-message="required">Product name is required!</div>
+  </div>
   <label>Amount</label>
-  <input type=”text” ng-model="ctrl.opp.amount">
-  <input type="submit" value="Create Opportunity">
+  <input type=”number” name="number" class="form-control" required="required" ng-model="ctrl.opp.amount">
+  <div ng-messages="form.number.$error" ng-if="form.number.$touched">
+    <div ng-message="number">Must be valid number!</div>
+    <div ng-message="required">Amount is required!</div>
+  </div> <br>
+  <input type="submit" clas="btn btn-primary" value="Create Opportunity">
 </form>
