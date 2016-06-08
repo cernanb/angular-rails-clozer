@@ -1,0 +1,28 @@
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+ * {
+
+   -webkit-box-sizing: border-box !important;
+   -moz-box-sizing: border-box !important;
+   -ms-box-sizing: border-box !important;
+   box-sizing: border-box !important;
+ }
+
+.opp-card {
+  width: 30%;
+  float: left;
+  border: 1px gray solid;
+  padding: 5px;
+  border-radius: 5px;
+  margin-right: 1%;
+  margin-bottom: 15px;
+  height: 130px;
+  background: rgba(153, 194, 255, 0.5);
+  box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.75);
+}
+
+li {
+  list-style-type: none;
+}

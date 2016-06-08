@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clozer</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body ng-app="closerApp">
+
+  <div class="container">
+    <div class="angular-view-container" ui-view></div>
+    <%= yield %>
+  </div>
+
+
+</body>
+</html>

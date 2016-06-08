@@ -1,0 +1,16 @@
+<div>
+  <h1>{{ctrl.opp.product}}</h1>
+  <h2>{{ctrl.opp.client_name}}</h2>
+  <h2>{{ctrl.opp.amount | currency:"$":0}}</h2>
+</div>
+
+<div>
+  <h4>Notes</h4>
+  <p ng-repeat="note in ctrl.opp.notes">
+    {{note.created_at | date}} - {{note.body}}
+  </p>
+  <form ng-submit="addNote()">
+    <input type="text">
+    <input type="submit" value="Add Note">
+  </form>
+</div>
