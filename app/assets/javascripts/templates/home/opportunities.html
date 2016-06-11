@@ -1,9 +1,10 @@
 <h2>Current Opportunities</h2>
+<h3>Total Sales Won: {{ctrl.totalSales | currency:"$":0}}</h3>
 <br>
 <input type="text" class="form-control opp-search text-center" ng-model="ctrl.search" placeholder="Search opportunities...">
 <br><br>
 <ul>
-  <li ng-repeat="opp in ctrl.opps | filter: ctrl.search">
+  <li ng-repeat="opp in ctrl.opps | filter: ctrl.search | orderBy: '-amount'">
     <opportunity opp="opp">
       <a href="#" ng-click="ctrl.deleteOpp(opp)">Delete Opportunity</a> <br>
       <label>

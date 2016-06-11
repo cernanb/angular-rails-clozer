@@ -1,13 +1,12 @@
-app
-  .service('OpportunitiesService', OpportunitiesService);
+app.service('OpportunitiesService', OpportunitiesService);
 
 function OpportunitiesService($http){
 
-  this.getOpportunities = function(){
+  this.getAllOpps = function(){
     return $http.get('http://localhost:3000/api/opportunities');
   }
 
-  this.getOpportunity = function(id){
+  this.getOpp = function(id){
     var opp =  $http.get('http://localhost:3000/api/opportunities/' + id);
     return opp;
   }
@@ -18,6 +17,10 @@ function OpportunitiesService($http){
 
   this.editOpp = function(updatedOpp, id){
     return $http.put('http://localhost:3000/api/opportunities/' + id, updatedOpp);
+  }
+
+  this.deleteOpp = function(opp) {
+    return $http.delete('http://localhost:3000/api/opportunities/' + opp.id);
   }
 
 }

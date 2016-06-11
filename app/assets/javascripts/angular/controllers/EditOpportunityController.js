@@ -1,10 +1,12 @@
 function EditOpportunityController(OpportunitiesService, $stateParams, $location){
   var ctrl = this;
 
-  OpportunitiesService.getOpportunity($stateParams.id)
-  .then(function(resp){
-    ctrl.opp = resp.data.opportunity
-  });
+  ctrl.getOpp = function(id){
+    OpportunitiesService.getOpp(id)
+    .then(function(resp){
+      ctrl.opp = resp.data.opportunity
+    });
+  }
 
   ctrl.editOpp = function(){
     var updatedOpp = {
@@ -14,12 +16,14 @@ function EditOpportunityController(OpportunitiesService, $stateParams, $location
     }
 
     OpportunitiesService.editOpp(updatedOpp, $stateParams.id)
-    .then(function(resp){
-      $location.path('opportunity/' + resp.data.opportunity.id);
-    });
-
+    .then(function(response){
+      $location.path('opportunity/' + response.data.opportunity.id);
+    }, function(error){
+        alert('Error updating opportunity: ' + error.statusText);
+    })
   }
 
+  ctrl.getOpp($stateParams.id)
 }
 
 app.controller('EditOpportunityController', EditOpportunityController);

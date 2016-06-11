@@ -1,17 +1,35 @@
 app.controller('OpportunitiesController', OpportunitiesController);
 
-function OpportunitiesController(OpportunitiesService, $http, $location){
+function OpportunitiesController(OpportunitiesService, $location){
   var ctrl = this;
 
-  OpportunitiesService.getOpportunities()
-  .then(function(response){
-    ctrl.opps = response.data.opportunities;
-  });
+  ctrl.sumSales = function(){
+    var total = 0;
+    ctrl.opps.forEach(function(opp){
+      if (opp.won){
+        total += opp.amount
+      }
+    });
+    ctrl.totalSales = total;
+  }
+
+  ctrl.getAllOpps = function(){
+    OpportunitiesService.getAllOpps()
+    .then(function(response){
+      ctrl.opps = response.data.opportunities;
+      console.log((ctrl.opps[0].created_at) )
+      ctrl.sumSales();
+    }, function(error){
+        alert('Unable to get all opportunities! Error: ' + error.statusText);
+    })
+  }
 
   ctrl.deleteOpp = function(opp){
-    $http.delete('http://localhost:3000/api/opportunities/' + opp.id)
+    OpportunitiesService.deleteOpp
     .then(function(resp){
       $location.path('opportunities');
+    }, function(error){
+      alert('Unable to delete opportunity! Error: ' + error.statusText);
     });
   }
 
@@ -21,7 +39,10 @@ function OpportunitiesController(OpportunitiesService, $http, $location){
     }
     OpportunitiesService.editOpp(updatedOpp, opp.id)
     .then(function(resp){
+      ctrl.sumSales();
       $location.path('opportunities');
     });
   }
+
+  ctrl.getAllOpps()
 }
