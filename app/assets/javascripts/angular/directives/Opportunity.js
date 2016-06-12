@@ -3,7 +3,12 @@ function Opportunity(){
     restrict: 'E',
     templateUrl: 'directives/opportunity.html',
     transclude: true,
-    scope: {
+    scope: { },
+    controller: function(){
+      
+    },
+    controllerAs: 'oppCtrl',
+    bindToController: {
       opp: "=",
       delete: "&onDelete"
     }
