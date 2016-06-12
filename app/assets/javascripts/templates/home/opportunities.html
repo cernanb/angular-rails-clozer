@@ -1,15 +1,27 @@
 <h2>Current Opportunities</h2>
 <h3>Total Sales Won: {{ctrl.totalSales | currency:"$":0}}</h3>
+<input type="checkbox" ng-model="ctrl.closed" ng-change="ctrl.closedSales()"> All Closed Sales </input><br>
 <br>
-<input type="text" class="form-control opp-search text-center" ng-model="ctrl.search" placeholder="Search opportunities...">
+<div class="row">
+  <div class="col-md-4">
+    <input type="text" class="form-control opp-search text-center" ng-model="search.client_name" placeholder="Search clients...">
+  </div>
+  <div class="col-md-4">
+    <input type="text" class="form-control opp-search text-center" ng-model="search.product" placeholder="Search products...">
+  </div>
+  <div class="col-md-4">
+    <input type="text" class="form-control opp-search text-center" ng-model="search.amount" placeholder="Search commission amount...">
+  </div>
+</div>
 <br><br>
 <ul>
-  <li ng-repeat="opp in ctrl.opps | filter: ctrl.search | orderBy: '-amount'">
-    <opportunity opp="opp">
-      <a href="#" ng-click="ctrl.deleteOpp(opp)">Delete Opportunity</a> <br>
-      <label>
-        <input type="checkbox" ng-change="ctrl.closeSale(opp)" ng-model="opp.won"> Sale Won
-      </label>
-    </opportunity>
+  <li ng-repeat="opp in ctrl.opps | filter: search:strict | orderBy: '-amount'">
+    <div class="col-md-4">
+      <opportunity opp="opp" on-delete="ctrl.deleteOpp(opp)">
+        <label>
+          <input type="checkbox" ng-change="ctrl.closeSale(opp)" ng-model="opp.won"> Sale Won
+        </label>
+      </opportunity>
+    </div>
   </li>
 </ul>

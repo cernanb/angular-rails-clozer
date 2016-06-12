@@ -1,10 +1,13 @@
-var Opportunity = {
-  templateUrl: 'directives/opportunity.html',
-  controllerAs: 'ctrl',
-  transclude: true,
-  bindings: {
-    opp: "="
+function Opportunity(){
+  return {
+    restrict: 'E',
+    templateUrl: 'directives/opportunity.html',
+    transclude: true,
+    scope: {
+      opp: "=",
+      delete: "&onDelete"
+    }
   }
 }
 
-app.component('opportunity', Opportunity);
+app.directive('opportunity', Opportunity);

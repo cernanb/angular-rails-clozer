@@ -1,5 +1,5 @@
 var app = angular.module('closerApp', ['ui.router', 'ngResource', 'templates', 'ngMessages']);
-
+var API_URL = 'http://localhost:3000/api/'
 app
   .config(function($stateProvider, $urlRouterProvider){
     $stateProvider

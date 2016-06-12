@@ -3,7 +3,6 @@ Rails.application.routes.draw do
     resources :opportunities do
       resources :notes, only: [:create]
     end
-    resources :notes
   end
 
   root 'application#home'

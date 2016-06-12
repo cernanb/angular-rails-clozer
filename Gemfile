@@ -13,6 +13,7 @@ gem 'bower-rails'
 gem 'angular-rails-templates'
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'faker'
 
 
 group :development, :test do

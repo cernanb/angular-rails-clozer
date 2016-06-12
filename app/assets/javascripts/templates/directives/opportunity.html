@@ -1,11 +1,12 @@
-<div class="opp-card" ng-class="{'green' : ctrl.opp.won}">
-  <a href="#" ui-sref="home.opportunity({id: ctrl.opp.id})"><h4>Opportunity</h4></a>
+<div class="opp-card" ng-class="{'green' : opp.won}">
+  <a href="#" ui-sref="home.opportunity({id: opp.id})"><h4>Opportunity</h4></a>
   <label>Client: </label>
-   {{ctrl.opp.client_name}} <br>
+   {{opp.client_name}} <br>
   <label>Product: </label>
-   {{ctrl.opp.product}} <br>
+   {{opp.product}} <br>
   <label>Commission Amount: </label>
-   {{ctrl.opp.amount | currency:"$":0}} <br>
-  <a href="#" ui-sref="home.edit({id: ctrl.opp.id})">Edit Opportunity</a> <br>
+   {{opp.amount | currency:"$":0}} <br>
+  <a href="#" ui-sref="home.edit({id: opp.id})">Edit Opportunity</a> <br>
+  <a href="#" ng-click="delete(opp)">Delete Opportunity</a> <br>
   <ng-transclude></ng-transclude> <br>
 </div>

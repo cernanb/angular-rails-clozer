@@ -3,6 +3,19 @@ app.controller('OpportunitiesController', OpportunitiesController);
 function OpportunitiesController(OpportunitiesService, $location){
   var ctrl = this;
 
+  ctrl.closedSales = function(){
+    if (ctrl.closed){
+      ctrl.opps = ctrl.opps.filter(function(opp){
+        if (opp.won){
+          return opp;
+        }
+      });
+    }
+    else {
+      ctrl.getAllOpps();
+    }
+  }
+
   ctrl.sumSales = function(){
     var total = 0;
     ctrl.opps.forEach(function(opp){
@@ -17,7 +30,6 @@ function OpportunitiesController(OpportunitiesService, $location){
     OpportunitiesService.getAllOpps()
     .then(function(response){
       ctrl.opps = response.data.opportunities;
-      console.log((ctrl.opps[0].created_at) )
       ctrl.sumSales();
     }, function(error){
         alert('Unable to get all opportunities! Error: ' + error.statusText);
@@ -25,7 +37,7 @@ function OpportunitiesController(OpportunitiesService, $location){
   }
 
   ctrl.deleteOpp = function(opp){
-    OpportunitiesService.deleteOpp
+    OpportunitiesService.deleteOpp(opp)
     .then(function(resp){
       $location.path('opportunities');
     }, function(error){

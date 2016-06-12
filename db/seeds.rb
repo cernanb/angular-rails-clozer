@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+20.times do
+  Opportunity.create(client_name: Faker::Name.name, product: Faker::Commerce.product_name, amount: Faker::Commerce.price.to_i * 10)
+end

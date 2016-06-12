@@ -10,14 +10,13 @@
 }
 
 .opp-card {
-  width: 30%;
-  float: left;
   border: 1px gray solid;
   padding: 5px;
   border-radius: 5px;
-  margin-right: 1%;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 15px;
-  height: 185px;
   background: rgba(153, 194, 255, 0.5);
   box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.75);
   a, a:hover {
@@ -30,16 +29,11 @@ li {
   list-style-type: none;
 }
 
-.opp-search {
-  align: center;
-  width: 75%;
-  margin: auto;
-}
+// .opp-search {
+//   align: center;
+//   margin: auto;
+// }
 
 .green {
   background: rgba(67, 197, 67, 0.5);
-}
-
-.yellow {
-  background: rgba(230, 232, 113, 0.5);
 }
