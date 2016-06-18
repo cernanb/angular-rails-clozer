@@ -9,7 +9,7 @@
   <p ng-repeat="note in ctrl.opp.notes">
     {{note.created_at | date}} - {{note.body}}
   </p>
-  <form name="form" ng-submit="noteCtrl.addNote()">
+  <form name="form" ng-submit="noteCtrl.addNote(ctrl)">
     <input name="body" required="required" type="text" ng-model="noteCtrl.body">
     <input type="submit" value="Add Note">
   </form>

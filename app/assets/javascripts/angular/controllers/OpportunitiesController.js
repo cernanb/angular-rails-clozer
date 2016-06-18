@@ -5,15 +5,27 @@ function OpportunitiesController(OpportunitiesService, $location){
 
   ctrl.closedSales = function(){
     if (ctrl.closed){
-      ctrl.opps = ctrl.opps.filter(function(opp){
+      ctrl.visibleOpps = ctrl.opps.filter(function(opp){
         if (opp.won){
           return opp;
         }
       });
     }
     else {
-      ctrl.getAllOpps();
+      ctrl.visibleOpps = ctrl.opps;
     }
+  }
+
+  ctrl.closeSale = function(opp){
+    var updatedOpp = {
+      won : opp.won
+    }
+    OpportunitiesService.editOpp(updatedOpp, opp.id)
+    .then(function(resp){
+      ctrl.sumSales();
+      ctrl.closedSales();
+      // $location.path('opportunities');
+    });
   }
 
   ctrl.sumSales = function(){
@@ -31,6 +43,8 @@ function OpportunitiesController(OpportunitiesService, $location){
     .then(function(response){
       ctrl.opps = response.data.opportunities;
       ctrl.sumSales();
+      ctrl.visibleOpps = ctrl.opps;
+
     }, function(error){
         alert('Unable to get all opportunities! Error: ' + error.statusText);
     })
@@ -39,22 +53,13 @@ function OpportunitiesController(OpportunitiesService, $location){
   ctrl.deleteOpp = function(opp){
     OpportunitiesService.deleteOpp(opp)
     .then(function(resp){
-      $location.path('opportunities');
+      var index = ctrl.opps.indexOf(opp);
+      ctrl.opps.splice(index, 1);
+      ctrl.visibleOpps =  ctrl.opps;
     }, function(error){
       alert('Unable to delete opportunity! Error: ' + error.statusText);
     });
   }
 
-  ctrl.closeSale = function(opp){
-    var updatedOpp = {
-      won : opp.won
-    }
-    OpportunitiesService.editOpp(updatedOpp, opp.id)
-    .then(function(resp){
-      ctrl.sumSales();
-      $location.path('opportunities');
-    });
-  }
-
-  ctrl.getAllOpps()
+  ctrl.getAllOpps();
 }

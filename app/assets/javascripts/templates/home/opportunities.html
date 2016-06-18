@@ -15,7 +15,7 @@
 </div>
 <br><br>
 <ul>
-  <li ng-repeat="opp in ctrl.opps | filter: search:strict | orderBy: '-amount'">
+  <li ng-repeat="opp in ctrl.visibleOpps | filter: search:strict | orderBy: '-amount'">
     <div class="col-md-4">
       <opportunity opp="opp" on-delete="ctrl.deleteOpp(opp)">
         <label>
