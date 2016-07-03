@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Clozer</a>
+      <a class="navbar-brand" ui-sref="home">Clozer</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -17,6 +17,24 @@
         <li><a href="#" ui-sref="home.opportunities" ui-sref-active="active">Opportunities <span class="sr-only">(current)</span></a></li>
         <li><a href="#" ui-sref="home.new" ui-sref-active="active">New Opp <span class="sr-only">(current)</span></a></li>
         <li><a href="#" ui-sref="home.about" ui-sref-active="active">About <span class="sr-only">(current)</span></a></li>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right" ng-controller="SessionsController as session">
+        <li ng-if="session.loggingIn">
+          <form name="loginForm" id="loginForm"
+                ng-submit="session.login(session.credentials)" novalidate>
+            <input type="text" id="email"
+                   ng-model="session.credentials.email"
+                   placeholder="Email">
+            <input type="password" id="password"
+                   ng-model="session.credentials.password"
+                   placeholder="Password">
+            <button hidden="hidden" type="submit">Login</button>
+          </form>
+        </li>
+        <li ng-if="user"><a>Signed in as {{user.first_name}}</a></li>
+        <li ng-if="user"><a href="#" ng-click="session.logout()">Logout</a></li>
+        <li ng-if="!user && !session.loggingIn" ng-click="session.renderLoginForm()"><a href="#">Login</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -28,6 +46,7 @@
   <div class="jumbotron">
     <h1>Welcome to Clozer!</h1>
     <h3>Close your sales faster</h3>
-    <p><a class="btn btn-primary btn-lg" href="#" role="button" ui-sref="home.about">Learn more</a></p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button" ui-sref="home.about">Learn more</a>
+    <a class="btn btn-primary btn-lg" href="#" role="button" ui-sref="home.signup">Sign up</a></p>
   </div>
 </div>

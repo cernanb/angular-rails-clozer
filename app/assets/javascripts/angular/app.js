@@ -1,8 +1,15 @@
-var app = angular.module('closerApp', ['ui.router', 'ngResource', 'templates', 'ngMessages']);
+var app = angular.module('closerApp', ['ui.router', 'ngResource', 'templates', 'ngMessages', 'Devise']);
 var API_URL = 'http://localhost:3000/api/'
 
 app
-  .config(function($stateProvider, $urlRouterProvider){
+  .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider){
+
+    $locationProvider.html5Mode({
+      enabled: true
+    });
+
+    $httpProvider.defaults.withCredentials = true;
+
     $stateProvider
       .state('home', {
         url: '/',
@@ -13,6 +20,11 @@ app
         url: 'opportunities',
         templateUrl: 'home/opportunities.html',
         controller: 'OpportunitiesController as ctrl'
+      })
+      .state('home.signup', {
+        url: 'signup',
+        templateUrl: 'home/signup.html',
+        controller: 'SessionsController as session'
       })
       .state('home.about', {
         url: 'about',
@@ -35,4 +47,12 @@ app
       });
 
       $urlRouterProvider.otherwise('/');
+  });
+
+  app.run(function(Auth){
+    Auth.currentUser().then(function(user){
+      // $scope.setCurrentUser(user);
+      console.log('user loaded after refresh');
+      console.log(Auth.isAuthenticated());
+    })
   })

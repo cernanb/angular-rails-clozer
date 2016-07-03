@@ -3,6 +3,9 @@ class Api::OpportunitiesController < ApplicationController
   respond_to :json
 
   def index
+    # user = User.find(1)
+    # raise user.opportunities.inspect
+    # respond_with(user.opportunities)
     respond_with(Opportunity.all)
   end
 
@@ -25,6 +28,7 @@ class Api::OpportunitiesController < ApplicationController
   end
 
   def show
+    raise params.inspect
     respond_with(Opportunity.find(params[:id]))
   end
 

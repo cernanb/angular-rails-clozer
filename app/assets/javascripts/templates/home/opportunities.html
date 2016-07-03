@@ -1,4 +1,4 @@
-<h2>Current Opportunities</h2>
+<h2><span ng-if='user'> {{user.first_name}}'s</span> Current Opportunities</h2>
 <h3>Total Sales Won: {{ctrl.totalSales | currency:"$":0}}</h3>
 <input type="checkbox" ng-model="ctrl.closed" ng-change="ctrl.closedSales()"> All Closed Sales </input><br>
 <br>

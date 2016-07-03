@@ -1,0 +1,20 @@
+<h1>Register</h1>
+<form name="signupForm"
+      ng-submit="session.signup(session.signupCred)" novalidate>
+  <label for="username">Email:</label>
+  <input type="text"
+         id="email"
+         class="form-control"
+         ng-model="session.signupCred.email">
+  <label for="password">Password:</label>
+  <input type="password"
+         id="password"
+         class="form-control"
+         ng-model="session.signupCred.password">
+  <label for="password">Confirm Password:</label>
+  <input type="password"
+         id="password"
+         class="form-control"
+         ng-model="session.signupCred.confirm_password"> <br>
+  <button class="btn-primary" type="submit">Login</button>
+</form>

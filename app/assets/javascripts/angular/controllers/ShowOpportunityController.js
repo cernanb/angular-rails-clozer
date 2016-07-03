@@ -1,10 +1,11 @@
-function ShowOpportunityController(OpportunitiesService, $stateParams){
+function ShowOpportunityController(OpportunitiesService, $stateParams, Auth){
   var ctrl = this;
 
   ctrl.getOpp = function(id){
     OpportunitiesService.getOpp(id)
     .then(function(response){
-      ctrl.opp = response.data.opportunity;
+      // console.log(response)
+      ctrl.opp = response.opportunity;
     }, function(error){
         alert('Unable to get opportunity: ' + error.statusText);
     })

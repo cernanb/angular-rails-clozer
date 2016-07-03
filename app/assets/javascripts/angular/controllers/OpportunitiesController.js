@@ -24,7 +24,6 @@ function OpportunitiesController(OpportunitiesService, $location){
     .then(function(resp){
       ctrl.sumSales();
       ctrl.closedSales();
-      // $location.path('opportunities');
     });
   }
 
@@ -40,14 +39,14 @@ function OpportunitiesController(OpportunitiesService, $location){
 
   ctrl.getAllOpps = function(){
     OpportunitiesService.getAllOpps()
-    .then(function(response){
-      ctrl.opps = response.data.opportunities;
-      ctrl.sumSales();
-      ctrl.visibleOpps = ctrl.opps;
+      .then(function(response){
+        ctrl.opps = response.opportunities;
+        ctrl.sumSales();
+        ctrl.visibleOpps = ctrl.opps;
 
-    }, function(error){
+      }, function(error){
         alert('Unable to get all opportunities! Error: ' + error.statusText);
-    })
+      })
   }
 
   ctrl.deleteOpp = function(opp){

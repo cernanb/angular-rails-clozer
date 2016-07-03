@@ -14,6 +14,11 @@ gem 'angular-rails-templates'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'faker'
+gem 'devise'
+
+source "https://rails-assets.org" do
+  gem "rails-assets-angular-devise"
+end
 
 
 group :development, :test do

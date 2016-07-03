@@ -10,7 +10,6 @@ function NewOpportunityController(OpportunitiesService, $location){
     OpportunitiesService.addOpp(newOpp)
     .then(function(resp){
       $location.path('opportunity/' + resp.data.opportunity.id);
-      alert('New Opportunity Added!')
     },
       function(error){
         alert('Cannot create opportunity: ' + error.statusText);

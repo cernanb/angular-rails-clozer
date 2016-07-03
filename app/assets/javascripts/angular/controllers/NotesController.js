@@ -1,6 +1,6 @@
 function NotesController(NotesService, $location, $stateParams, $state){
   var ctrl = this;
-
+  
   ctrl.addNote = function(oppCtrl) {
 
     var newNote = {

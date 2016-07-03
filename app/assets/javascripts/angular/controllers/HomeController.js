@@ -1,5 +1,5 @@
 app.controller('HomeController', HomeController);
 
-function HomeController(){
-
+function HomeController(Auth){
+  
 }

@@ -29,11 +29,12 @@ li {
   list-style-type: none;
 }
 
-// .opp-search {
-//   align: center;
-//   margin: auto;
-// }
-
 .green {
   background: rgba(67, 197, 67, 0.5);
+}
+
+form#loginForm {
+  padding: 10px;
+  height: 100%;
+  margin: none;
 }
