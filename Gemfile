@@ -13,6 +13,7 @@ gem 'angular-rails-templates'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'faker'
+gem 'foreman'
 
 
 group :development, :test do
@@ -27,4 +28,10 @@ end
 
 group :production do
   gem 'pg'
+end
+
+group :production, :staging do
+  gem "rails_12factor"
+  gem "rails_stdout_logging"
+  gem "rails_serve_static_assets"
 end
