@@ -14,6 +14,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'faker'
 gem 'foreman'
+gem 'ngannotate-rails'
 
 
 group :development, :test do
