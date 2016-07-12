@@ -1,7 +1,12 @@
 app.controller('SessionsController', SessionsController);
 
-function SessionsController(AuthService, $scope){
+function SessionsController(AuthService, Auth, $scope, Session){
   var ctrl = this;
+
+  Auth.currentUser()
+  .then(function(user){
+    ctrl.user = user;
+  });
 
   ctrl.loggingIn = false;
 
@@ -23,11 +28,13 @@ function SessionsController(AuthService, $scope){
   }
 
   ctrl.login = function(credentials){
-    AuthService.login(credentials).
-    then(function(user){
+    AuthService.login(credentials)
+    .then(function(user){
+      Session.create(user.id);
       $scope.setCurrentUser(user);
       ctrl.credentials = {};
       ctrl.loggingIn = false;
+      return user
     });
   }
 
@@ -37,7 +44,6 @@ function SessionsController(AuthService, $scope){
 
   ctrl.renderLoginForm = function() {
     ctrl.loggingIn = true;
-    console.log(ctrl.loggingIn)
   }
 
   ctrl.logout = function(){

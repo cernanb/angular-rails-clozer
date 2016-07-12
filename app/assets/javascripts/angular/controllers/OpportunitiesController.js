@@ -1,6 +1,6 @@
 app.controller('OpportunitiesController', OpportunitiesController);
 
-function OpportunitiesController(OpportunitiesService, $location){
+function OpportunitiesController(OpportunitiesService, $location, $scope, Auth, Session){
   var ctrl = this;
 
   ctrl.closedSales = function(){
@@ -38,8 +38,10 @@ function OpportunitiesController(OpportunitiesService, $location){
   }
 
   ctrl.getAllOpps = function(){
-    OpportunitiesService.getAllOpps()
+
+    OpportunitiesService.getAllUserOpps()
       .then(function(response){
+        // console.log(response)
         ctrl.opps = response.opportunities;
         ctrl.sumSales();
         ctrl.visibleOpps = ctrl.opps;
@@ -60,5 +62,6 @@ function OpportunitiesController(OpportunitiesService, $location){
     });
   }
 
-  ctrl.getAllOpps();
+  ctrl.getAllOpps(Session.userId);
+
 }

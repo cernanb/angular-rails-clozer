@@ -1,20 +1,10 @@
-function AuthService(Auth, Session){
-  var auth = this;
-
-  auth.login = function(credentials){
-    return Auth.login(credentials)
-    .then(function(response){
-      Session.create(response.id);
-      console.log(response)
-      return response;
-    });
+function AuthService(Auth){
+  this.login = function(credentials){
+    return Auth.login(credentials);
   }
 
-  auth.logout = function(){
-    Auth.logout()
-    .then(function(response){
-      Session.destroy();
-    });
+  this.logout = function(){
+    return Auth.logout();
   }
 }
 

@@ -1,5 +1,4 @@
 function ApplicationController($scope, Auth){
-  // var appCtrl = this
   $scope.signedIn = Auth.isAuthenticated();
 
   Auth.currentUser()

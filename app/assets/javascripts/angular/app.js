@@ -49,9 +49,11 @@ app
       $urlRouterProvider.otherwise('/');
   });
 
-  app.run(function(Auth){
+  app.run(function(Auth, Session){
     Auth.currentUser().then(function(user){
       // $scope.setCurrentUser(user);
+      Session.create(user.id);
+      // console.log(Session.getUserId())
       console.log('user loaded after refresh');
       console.log(Auth.isAuthenticated());
     })

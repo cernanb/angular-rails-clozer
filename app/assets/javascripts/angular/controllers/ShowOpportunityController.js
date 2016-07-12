@@ -4,7 +4,6 @@ function ShowOpportunityController(OpportunitiesService, $stateParams, Auth){
   ctrl.getOpp = function(id){
     OpportunitiesService.getOpp(id)
     .then(function(response){
-      // console.log(response)
       ctrl.opp = response.opportunity;
     }, function(error){
         alert('Unable to get opportunity: ' + error.statusText);

@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     resources :opportunities do
       resources :notes, only: [:create]
     end
+
+    resources :users, only: [:index] do
+      resources :opportunities, only: [:index]
+    end
   end
 
 
