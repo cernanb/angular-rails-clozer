@@ -1,5 +1,5 @@
 var app = angular.module('closerApp', ['ui.router', 'ngResource', 'templates', 'ngMessages']);
-var API_URL = 'https://young-mountain-64301.herokuapp.com/';
+var API_URL = 'https://young-mountain-64301.herokuapp.com/api/';
 
 app
   .config(function($stateProvider, $urlRouterProvider){
