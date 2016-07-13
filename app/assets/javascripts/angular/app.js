@@ -1,5 +1,7 @@
-var app = angular.module('closerApp', ['ui.router', 'ngResource', 'templates', 'ngMessages', 'Devise']);
-var API_URL = 'http://localhost:3000/api/'
+var app = angular.module('closerApp', ['ui.router', 'ngResource', 'templates', 'ngMessages']);
+var API_URL = 'https://young-mountain-64301.herokuapp.com/api/';
+
+
 
 app
   .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider){
